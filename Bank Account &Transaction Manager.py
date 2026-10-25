@@ -31,9 +31,24 @@ class account :
         self.balance -= amount
         print (f"{amount:.2f} was withrdraw")
 
-
+    def __str__(self):
+        return f"owner :{self.owner} | balance : {self.balance:.2f} dollar"
+    def __repr__(self):
+        return f"Account(owner='{self.owner}', balance={self._balance})"
+    def __add__(self, other):
+        if isinstance(other, account):
+            marged = f"{self.owner} + {other.owner}"
+            return account(owner= marged, balance=self.balance + other.balance)
+        raise TypeError ("process takes two vaild accounts")
+    def to_dict(self) -> dict:
+        return {
+            "owner": self.owner,
+            "balance": self.balance,
+            "type": "Standard",
+            "transactions": self.transactions
+        }
 acc1=account("eilomilo", 1000)
-acc1.deposit(500)
-acc1.withdraw(100)
-print(acc1.balance, acc1._balance)
+acc2=account("alaa", 1000)
+acc_tot =acc1 + acc2
+print (acc_tot)
 
