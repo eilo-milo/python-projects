@@ -1,7 +1,6 @@
 import sys
 import os
 import json
-from datetime import datetime
 DB_FILE = "tasks.json"
 def load_tasks():
  """Load tasks from tasks.json file. If file doesn't exist, return empty list."""
